@@ -1,0 +1,10 @@
+// SCRIPT POUR SUPPRIMER TOUTES LES IMAGES ET LES RELANCER \\
+
+docker stop $(docker ps -q) && docker rm $(docker ps -aq) && \
+docker run -d --name client -p 3000:3000 eddytrs/client && \
+docker run -d --name comments -p 4001:4001 eddytrs/comments && \
+docker run -d --name event-bus -p 4005:4005 eddytrs/event-bus && \
+docker run -d --name moderation -p 4003:4003 eddytrs/moderation && \
+docker run -d --name posts -p 4000:4000 eddytrs/posts && \
+docker run -d --name query -p 4002:4002 eddytrs/query
+
